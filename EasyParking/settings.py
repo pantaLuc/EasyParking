@@ -50,8 +50,8 @@ INSTALLED_APPS = [
 
     ##local appp
     'users.apps.UsersConfig',
-    'easypark.apps.EasyparkConfig'
-
+    'easypark.apps.EasyparkConfig',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -94,6 +94,19 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'easyparking_db',
+#         'USER': 'loic',
+#         'PASSWORD': 'loic12345',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 
 
 # Password validation
