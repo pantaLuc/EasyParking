@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount', # new6  
     'dj_rest_auth', #
     'dj_rest_auth.registration', # new5
-
+    'corsheaders',
     ##local appp
     'users.apps.UsersConfig',
     'easypark.apps.EasyparkConfig',
@@ -150,3 +150,11 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 #####media URL
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_REPLACE_HTTPS_REFERER = True
+#CSRF_TRUSTED_ORIGINS =True
+CSRF_TRUSTED_ORIGINS = ['*']
