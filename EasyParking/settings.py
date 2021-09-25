@@ -50,6 +50,8 @@ INSTALLED_APPS = [
 
     ##local appp
     'users.apps.UsersConfig',
+    'easypark.apps.EasyparkConfig',
+    'drf_yasg',
 
 ]
 
