@@ -1,1 +1,1 @@
-web: gunicorn easyParking.wsgi --log-file -
+web: gunicorn EasyParking.wsgi --log-file -
