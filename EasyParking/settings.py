@@ -16,6 +16,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 import os
 import django_heroku
+from datetime import timedelta
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -54,6 +56,25 @@ INSTALLED_APPS = [
     'drf_yasg',
 
 ]
+REST_USE_JWT = True
+JWT_AUTH_COOKIE = 'my-app-auth'
+JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+}
+
+# new
+REST_FRAMEWORK = {
+'DEFAULT_PERMISSION_CLASSES': [
+'rest_framework.permissions.IsAuthenticated',
+],
+'DEFAULT_AUTHENTICATION_CLASSES': [ # new
+'rest_framework.authentication.SessionAuthentication',
+'rest_framework.authentication.TokenAuthentication', # new
+'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+],
+
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -152,6 +173,7 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 #####media URL
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_ALL_ORIGINS = True
