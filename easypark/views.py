@@ -7,6 +7,8 @@ from typing import Generic
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework import generics,permissions, serializers ,viewsets,status
+from rest_framework import generics, permissions
+# new
 # Create your views here.
 
 # class AdminNetworkCreate(generics.CreateAPIView):
@@ -25,9 +27,7 @@ from rest_framework import generics,permissions, serializers ,viewsets,status
 
 
 class NetworkViewSet(viewsets.ViewSet):
-    # authentication_classes = [JwtAuthenticatedUser]
-    # permission_classes = [IsAuthenticated]
-
+    permission_classes = (permissions.IsAuthenticated,)
     def list(self, request):
         serializer = NetworkSerializer(Network.objects.all(), many=True)
         return Response({
@@ -67,9 +67,7 @@ class NetworkViewSet(viewsets.ViewSet):
 
 
 class NodeViewSet(viewsets.ViewSet):
-    # authentication_classes = [JwtAuthenticatedUser]
-    # permission_classes = [IsAuthenticated]
-
+    permission_classes = (permissions.IsAuthenticated,)
     def list(self, request):
         serializer = NodeSerializer(Node.objects.all(), many=True)
         return Response({
@@ -110,9 +108,7 @@ class NodeViewSet(viewsets.ViewSet):
 
 
 class DataViewSet(viewsets.ViewSet):
-    # authentication_classes = [JwtAuthenticatedUser]
-    # permission_classes = [IsAuthenticated]
-
+    permission_classes = (permissions.IsAuthenticated,)
     def list(self, request):
         serializer = DataSerializer(Data.objects.all(), many=True)
         return Response({
@@ -153,9 +149,7 @@ class DataViewSet(viewsets.ViewSet):
 
 
 class PlaceViewSet(viewsets.ViewSet):
-    # authentication_classes = [JwtAuthenticatedUser]
-    # permission_classes = [IsAuthenticated]
-
+    permission_classes = (permissions.IsAuthenticated,)
     def list(self, request):
         serializer = PlaceSerializer(Place.objects.all(), many=True)
         return Response({
